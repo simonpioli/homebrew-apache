@@ -1,8 +1,8 @@
 class Httpd24 < Formula
   desc "HTTP server"
   homepage "https://httpd.apache.org/"
-  url "https://archive.apache.org/dist/httpd/httpd-2.4.25.tar.bz2"
-  sha256 "f87ec2df1c9fee3e6bfde3c8b855a3ddb7ca1ab20ca877bd0e2b6bf3f05c80b2"
+  url "https://archive.apache.org/dist/httpd/httpd-2.4.26.tar.bz2"
+  sha256 "a07eb52fafc879e0149d31882f7da63173e72df4478db4dc69f7a775b663d387"
 
   bottle do
     sha256 "d0337466b0b0f843e815afb834d6d6238bdaeb1053dc30e8b8e4b3fe5f1dcdb9" => :sierra
@@ -10,27 +10,22 @@ class Httpd24 < Formula
     sha256 "91c2ab947deebf1c82ce4503efbec62e7ca1cc999d8a4e109617ebc35197b67d" => :yosemite
   end
 
-  conflicts_with "homebrew/apache/httpd22", :because => "different versions of the same software"
-
   skip_clean :la
 
   option "with-mpm-worker", "Use the Worker Multi-Processing Module instead of Prefork"
   option "with-mpm-event", "Use the Event Multi-Processing Module instead of Prefork"
   option "with-privileged-ports", "Use the default ports 80 and 443 (which require root privileges), instead of 8080 and 8443"
   option "with-ldap", "Include support for LDAP"
-  option "with-http2", "Build and enable the HTTP/2 shared Module"
+  deprecated_option "with-http2" => "with-nghttp2"
 
   depends_on "openssl"
   depends_on "pcre"
   depends_on "zlib"
+  depends_on "apr-util"
+  depends_on "apr-util" => "with-openldap" if build.with? "ldap"
+  depends_on "nghttp2" => :recommended
 
-  if build.with? "ldap"
-    depends_on "apr-util" => "with-openldap"
-  else
-    depends_on "apr-util"
-  end
-
-  depends_on "nghttp2" if build.with? "http2"
+  conflicts_with "homebrew/apache/httpd22", :because => "different versions of the same software"
 
   if build.with?("mpm-worker") && build.with?("mpm-event")
     raise "Cannot build with both worker and event MPMs, choose one"
@@ -86,7 +81,7 @@ class Httpd24 < Formula
       args << "--with-port=8080" << "--with-sslport=8443"
     end
 
-    if build.with? "http2"
+    if build.with? "nghttp2"
       args << "--enable-http2" << "--with-nghttp2=#{Formula["nghttp2"].opt_prefix}"
     end
 
@@ -106,10 +101,9 @@ class Httpd24 < Formula
     touch("#{var}/log/apache2/error_log") unless File.exist?("#{var}/log/apache2/error_log")
   end
 
+  plist_options :manual => "apachectl start"
   if build.with? "privileged-ports"
     plist_options :startup => true, :manual => "apachectl start"
-  else
-    plist_options :manual => "apachectl start"
   end
 
   def plist; <<-EOS.undent
