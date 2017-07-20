@@ -18,10 +18,10 @@ class ModSecurity < Formula
   head "https://github.com/SpiderLabs/ModSecurity.git"
 
   bottle do
-    cellar :any
-    sha256 "d4c2b06ad033fe4263401c5e4e0b65bdee7770bc61ff19a34e5bd6ff168c545c" => :el_capitan
-    sha256 "3d9437bf355784c5c63134de2602748e3ac6d4961eecb4c4a172f41e06edbd61" => :yosemite
-    sha256 "5277e3a645a6de545f576140259dfd2fc4d17b9a2bd159a4b83d3ca4447bf200" => :mavericks
+    cellar :any_skip_relocation
+    sha256 "d7bc07fa7ba209bcc7c4630017eeb609b7c2da4b49f534d734f245c2e1082e63" => :sierra
+    sha256 "ddd78a25136e98dd83ca1b54770eadba2d6c88aa6c00fa560a1897884e853932" => :el_capitan
+    sha256 "3fead59da9c0fd003731ac4c849108c5b277ded7130359920e473a6b92d0ad53" => :yosemite
   end
 
   option "with-homebrew-apr", "Use Homebrew apr"
