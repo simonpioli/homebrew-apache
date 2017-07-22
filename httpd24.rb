@@ -5,9 +5,9 @@ class Httpd24 < Formula
   sha256 "71fcc128238a690515bd8174d5330a5309161ef314a326ae45c7c15ed139c13a"
 
   bottle do
-    sha256 "89f980ec2619b7d879a133da9422a4163aa82f33ab38b0591b0f44d031aaf056" => :sierra
-    sha256 "264f59cdccbd3e01959800ee24a2a41b2000ad69b0da789e49d8fb2403cb2395" => :el_capitan
-    sha256 "5ae313fd0048d8b7f2a5c98c7ce6db8d974fecf1b6ec525d5ad592a8b2efe76b" => :yosemite
+    sha256 "d35e67ae745053cda23273a520ead6bde506ec8082057edcd3185c9e36eae483" => :sierra
+    sha256 "4ea7056d6c08f9cf49507869aa8c78e3522c601d87b3347d31561ba05b33d41c" => :el_capitan
+    sha256 "e6ae5c4d38b40bcf3d85877ac117a1ea048de774edec3c2b0ff714bc01a6d40a" => :yosemite
   end
 
   skip_clean :la
