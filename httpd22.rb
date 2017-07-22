@@ -5,9 +5,9 @@ class Httpd22 < Formula
   sha256 "e53183d5dfac5740d768b4c9bea193b1099f4b06b57e5f28d7caaf9ea7498160"
 
   bottle do
-    sha256 "296d67b38cc3cdf326530edc573291f5a7de6caa1538b361da55bd874e2c0c47" => :sierra
-    sha256 "eabf51413b9323a3633619fe84b51d15489fcdefb8689f3798c3041ca42dd18b" => :el_capitan
-    sha256 "6f6da629e7374d731794e26b703cbe4661a7d05a732836c43d735d10fc1536bb" => :yosemite
+    sha256 "af3b618165f80292908c6029b8d010f377f57831067dddd07af76bc2e890c7c9" => :sierra
+    sha256 "03342fb04199b2d0d0721cdf97063735c03efe7e3ed8e83e0e5b563f4bf75717" => :el_capitan
+    sha256 "a3b54b8ee5bc4b60faf635d1d7d2356620917a78ff57670412a6100842169e1f" => :yosemite
   end
 
   skip_clean :la
