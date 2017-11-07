@@ -1,4 +1,4 @@
-class Httpd < Formula
+class Httpdpp < Formula
   desc "Apache HTTP server"
   homepage "https://httpd.apache.org/"
   url "https://www.apache.org/dyn/closer.cgi?path=httpd/httpd-2.4.27.tar.bz2"
